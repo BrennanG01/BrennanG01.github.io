@@ -1,5 +1,6 @@
 * {
   text-align: left;
+  color: lightgray;
 }
 
 html, body {
@@ -7,8 +8,13 @@ html, body {
   width: 100%;
 }
 
+body {
+ background-image: url("https://cdn.wallpapersafari.com/69/41/RvHfFP.jpg");
+ background-color: #cccccc;
+}
+
 h1 {
-  color: DeepPink;
+  color: Pink;
 }
 
 h2 {
@@ -16,10 +22,10 @@ h2 {
 }
 
 a {
-  color: deeppink;
+  color: pink;
   text-decoration: none;
 }
 
 a:hover {
-  color:blueviolet;
+  color:violet;
 }
