@@ -1,0 +1,13 @@
+* {
+  text-align: center;
+  background-color: #064120;
+  font-size: 1.25em;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid;
+  letter-spacing: 15px;
+}
