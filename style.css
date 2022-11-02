@@ -37,6 +37,14 @@ a:hover {
   color:violet;
 }
 
+#bSnake{
+  background-color: #363636;
+  color: pink;
+}
+#bSnake:hover{
+  background-color: #a8a8a8;
+  color: pink;
+}
 
 .WebContainer{
     width: 100%;
@@ -44,7 +52,7 @@ a:hover {
 }
 
 .content{
-    width:90%; /*Takes 90% width from WebContainer*/
+    width:90%;
     height: auto;
     margin: auto;
     background-color: #363636;
