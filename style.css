@@ -1,6 +1,6 @@
 * {
-  text-align: left;
-  color: lightgray;
+  text-align: center;
+  color: whitesmoke;
 }
 
 html, body {
@@ -8,13 +8,20 @@ html, body {
   width: 100%;
 }
 
+table { table-layout: fixed; }
+
+th, td { width: 300px; }
+
 body {
  background-image: url("https://cdn.wallpapersafari.com/69/41/RvHfFP.jpg");
  background-color: #cccccc;
 }
 
+
+
 h1 {
   color: Pink;
+  border-bottom: 1px solid
 }
 
 h2 {
