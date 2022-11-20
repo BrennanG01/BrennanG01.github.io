@@ -11,3 +11,8 @@ table {
   border: 3px solid;
   letter-spacing: 15px;
 }
+
+canvas {
+  background-color: #f1f1e9;
+/*   background-image: url("hex-stripped-grid-seamless-pattern-vector-id494311394-737558757") */
+}
