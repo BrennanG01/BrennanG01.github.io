@@ -137,9 +137,9 @@ function updateGameArea() {
     myGameArea.frameNo += 1;
     if(myGameArea.frameNo % 250 == 0) {
       if(Math.random() * 100 > 7){
-        pointPickups.push(new component(15, 15, "gold", Math.random() * cWidth, Math.random() * cHeight));
+        pointPickups.push(new component(15, 15, "gold", Math.random() * (cWidth - 15), Math.random() * (cHeight - 15)));
       } else {
-        dontPickups.push(new component(15, 15, "purple", Math.random() * cWidth, Math.random() * cHeight));
+        dontPickups.push(new component(15, 15, "purple", Math.random() * (cWidth - 15), Math.random() * (cHeight - 15)));
       }
     }
     for (i = 0; i < pointPickups.length; i += 1) {
