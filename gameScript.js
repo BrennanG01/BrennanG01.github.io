@@ -30,7 +30,7 @@ function component(width, height, color, x, y, type) {
   this.speedY = 0;
   this.x = x;
   this.y = y;
-  if(type !== undefined) {
+  if (type !== undefined) {
     this.type = type;
   }
   this.speedModifier = defaultSpeedModifier;
@@ -46,16 +46,16 @@ function component(width, height, color, x, y, type) {
     }
   }
   this.newPos = function() {
-    if((this.x + this.speedX + this.width <= cWidth || this.x + this.width <= cWidth) && (this.x + this.speedX >= 0 || this.x >= 0)){
+    if ((this.x + this.speedX + this.width <= cWidth || this.x + this.width <= cWidth) && (this.x + this.speedX >= 0 || this.x >= 0)) {
       this.x += this.speedX;
     }
-    if((this.y + this.speedY + this.height <= cHeight || this.y + this.height <= cHeight) && (this.y + this.speedY >= 0 || this.y >= 0)) {
+    if ((this.y + this.speedY + this.height <= cHeight || this.y + this.height <= cHeight) && (this.y + this.speedY >= 0 || this.y >= 0)) {
       this.y += this.speedY;
     }
   }
   this.respawn = function() {
     this.x = Math.random() * (cWidth - this.width);
-    this.y = Math.random() * (cHeight- this.height);
+    this.y = Math.random() * (cHeight - this.height);
     this.speedModifier = defaultSpeedModifier;
   }
   this.incSpeed = function() {
@@ -75,9 +75,9 @@ function component(width, height, color, x, y, type) {
     var otherbottom = otherobj.y + (otherobj.height);
     var crash = true;
     if ((mybottom < othertop) ||
-    (mytop > otherbottom) ||
-    (myright < otherleft) ||
-    (myleft > otherright)) {
+      (mytop > otherbottom) ||
+      (myright < otherleft) ||
+      (myleft > otherright)) {
       crash = false;
     }
     return crash;
@@ -94,81 +94,89 @@ var myGameArea = {
     this.frameNo = 0;
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     this.interval = setInterval(updateGameArea, 20);
-    window.addEventListener('keydown', function (e) {
+    window.addEventListener('keydown', function(e) {
       myGameArea.keys = (myGameArea.keys || []);
       myGameArea.keys[e.keyCode] = true;
     })
-  window.addEventListener('keyup', function (e) {
-    myGameArea.keys[e.keyCode] = false;
-  })
+    window.addEventListener('keyup', function(e) {
+      myGameArea.keys[e.keyCode] = false;
+    })
   },
   clear: function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
-  stop : function() {
+  stop: function() {
     clearInterval(this.interval);
   }
 }
 
 
 function updateGameArea() {
-    for (i = 0; i < pointPickups.length; i += 1) {
-        if (myGamePiece.crashWith(pointPickups[i])) {
-          pointPickups[i].respawn();
-          pointCount = pointCount + 1;
-        }
-      }
-    for (i = 0; i < dontPickups.length; i += 1) {
-        if (myGamePiece.crashWith(dontPickups[i])) {
-          pointCount = pointCount - 100;
-          myGamePiece.respawn();
-        }
-      }
-    if (myGamePiece.crashWith(speedPickup)) {
-      speedPickup.respawn();
-      myGamePiece.incSpeed();
-      noteTime = myGameArea.frameNo / 50; 
+  for (i = 0; i < pointPickups.length; i += 1) {
+    if (myGamePiece.crashWith(pointPickups[i])) {
+      pointPickups[i].respawn();
       pointCount = pointCount + 1;
     }
-    if(myGameArea.frameNo / 50 > noteTime + 5) {  //Five seconds of speed.
-      myGamePiece.decSpeed();
-    }
-    myGameArea.clear();
-    myGameArea.frameNo += 1;
-    if(myGameArea.frameNo % 250 == 0) {
-      if(Math.random() * 100 > 7){
-        pointPickups.push(new component(15, 15, "gold", Math.random() * (cWidth - 15), Math.random() * (cHeight - 15)));
-      } else {
-        dontPickups.push(new component(15, 15, "purple", Math.random() * (cWidth - 15), Math.random() * (cHeight - 15)));
+  }
+  for (i = 0; i < dontPickups.length; i += 1) {
+    if (myGamePiece.crashWith(dontPickups[i])) {
+      if (pointCount >= 10) {
+        pointCount = pointCount - 10;
       }
+      else {
+        pointCount = 0;
+      }
+      myGamePiece.respawn();
     }
-    for (i = 0; i < pointPickups.length; i += 1) {
-      // pointPickups[i].x += -1;  //Movement
-      pointPickups[i].update();
+  }
+  if (myGamePiece.crashWith(speedPickup)) {
+    speedPickup.respawn();
+    myGamePiece.incSpeed();
+    noteTime = myGameArea.frameNo / 50;
+    pointCount = pointCount + 1;
+  }
+  if (myGameArea.frameNo / 50 > noteTime + 5) {  //Five seconds of speed.
+    myGamePiece.decSpeed();
+  }
+  myGameArea.clear();
+  myGameArea.frameNo += 1;
+  if (myGameArea.frameNo % 250 == 0) {
+    if (Math.random() * 100 > 7) {
+      pointPickups.push(new component(15, 15, "gold", Math.random() * (cWidth - 15), Math.random() * (cHeight - 15)));
+    } else {
+      dontPickups.push(new component(15, 15, "purple", Math.random() * (cWidth - 15), Math.random() * (cHeight - 15)));
     }
-    for (i = 0; i < dontPickups.length; i += 1) {
-      // pointPickups[i].x += -1;  //Movement
-      dontPickups[i].update();
-    }
-    myGamePiece.speedX = 0;
-    myGamePiece.speedY = 0;
-    if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -1 * myGamePiece.speedModifier; }
-    if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 1 * myGamePiece.speedModifier; }
-    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY = -1 * myGamePiece.speedModifier; }
-    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY = 1 * myGamePiece.speedModifier; }
-    myGamePiece.newPos();
-    myGamePiece.update();
-    speedPickup.update();
-    for (i = 0; i < pointPickups.length; i += 1) {
-      pointPickups[i].update();  
-    }
-    for (i = 0; i < dontPickups.length; i += 1) {
-      dontPickups[i].update();  
-    }
-    gameTimer.text = "Time: " + myGameArea.frameNo / 50;
-    gameTimer.update();
-    myScore.text = "Score: " + pointCount;
-    myScore.update();
+  }
+  for (i = 0; i < pointPickups.length; i += 1) {
+    // pointPickups[i].x += -1;  //Movement
+    pointPickups[i].update();
+  }
+  for (i = 0; i < dontPickups.length; i += 1) {
+    // pointPickups[i].x += -1;  //Movement
+    dontPickups[i].update();
+  }
+  myGamePiece.speedX = 0;
+  myGamePiece.speedY = 0;
+  if (myGameArea.keys && myGameArea.keys[37]) { myGamePiece.speedX = -1 * myGamePiece.speedModifier; }
+  if (myGameArea.keys && myGameArea.keys[39]) { myGamePiece.speedX = 1 * myGamePiece.speedModifier; }
+  if (myGameArea.keys && myGameArea.keys[38]) { myGamePiece.speedY = -1 * myGamePiece.speedModifier; }
+  if (myGameArea.keys && myGameArea.keys[40]) { myGamePiece.speedY = 1 * myGamePiece.speedModifier; }
+  myGamePiece.newPos();
+  myGamePiece.update();
+  speedPickup.update();
+  for (i = 0; i < pointPickups.length; i += 1) {
+    pointPickups[i].update();
+  }
+  for (i = 0; i < dontPickups.length; i += 1) {
+    dontPickups[i].update();
+  }
+  gameTimer.text = "Time: " + myGameArea.frameNo / 50;
+  if ((myGameArea.frameNo / 50) >= 60) {
+    myGameArea.stop();
+  }
+  gameTimer.update();
+  myScore.text = "Score: " + pointCount;
+  myScore.update();
   //}
 }
 
