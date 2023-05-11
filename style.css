@@ -1,0 +1,66 @@
+* {
+  text-align: center;
+  color: whitesmoke;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+table { 
+  table-layout: fixed; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th, td { width: 300px; }
+
+body {
+ background-image: url("https://cdn.wallpapersafari.com/69/41/RvHfFP.jpg");
+ background-color: #cccccc;
+}
+
+
+
+h1 {
+  color: Pink;
+  border-bottom: 1px solid
+}
+
+h2 {
+  border-bottom: 1px solid;
+}
+
+a {
+  color: pink;
+  text-decoration: none;
+}
+
+a:hover {
+  color:violet;
+}
+
+button{
+  background-color: #363636;
+  color: pink;
+}
+button:hover{
+  background-color: #a8a8a8;
+  color: pink;
+}
+
+.WebContainer{
+    width: 100%;
+    height: auto;
+}
+
+.content{
+    width:90%;
+    height: auto;
+    margin: auto;
+    background-color: #363636;
+  
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpre00.deviantart.net%2F8fba%2Fth%2Fpre%2Ff%2F2013%2F223%2F7%2F3%2Fclean_black_1080_by_markwester-d6hm2hm.png&f=1&nofb=1&ipt=fe56f01567bde6235e12b83fc60a856248935c66671be31f1a57ea6bb77946f0&ipo=images");
+
+} 
