@@ -1,4 +1,5 @@
 // import React from 'react';
+// import {useEffect, useState} from 'react';
 import Intro from './components/Intro';
 import Footer from './components/Footer';
 import Contact from './components/Contact';

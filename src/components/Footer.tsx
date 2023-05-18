@@ -4,7 +4,7 @@ function Footer() {
     return (
         <div className="py-5 text-center">
             <p className="text-sm mt-2 opacity-50">
-                &copy; {new Date().getFullYear()} Brennan Goins. All rights reserved.
+                <a href="https://www.linkedin.com/in/brennan-goins/" target="_blank"> Connect with Me on LinkedIn </a> <br></br> &copy; {new Date().getFullYear()} Brennan Goins. All rights reserved.
             </p>
         </div>
     )

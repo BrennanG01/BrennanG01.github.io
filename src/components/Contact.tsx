@@ -8,6 +8,7 @@ function Contact() {
                 <form 
                     action="https://getform.io/f/d04bb37e-67a7-4e0b-b011-089200cb0d48"
                     method="POST"
+                    target= "_blank"
                     className="flex flex-col w-full md:w-7/12"
                 >
                     <Title>Contact</Title>
@@ -15,18 +16,21 @@ function Contact() {
                         type="text"
                         name="name"
                         placeholder="Name"
+                        required
                         className="p-2 bg-transparent border-2 rounded-md focus:outline-none"
                     />
                     <input 
                         type="text"
                         name="email"
                         placeholder="Email"
+                        required
                         className="my-2 p-2 bg-transparent border-2 rounded-md focus:outline-none"
                     />
                     <textarea
                         name="message"
                         placeholder="Message"
                         rows={10}
+                        required
                         className="p-2 mb-4 bg-transparent border-2 rounded-md focus:outline-none"
                     />
                     <button
