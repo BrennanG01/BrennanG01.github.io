@@ -9,6 +9,7 @@ function Contact() {
                     action="https://getform.io/f/d04bb37e-67a7-4e0b-b011-089200cb0d48"
                     method="POST"
                     target= "_blank"
+                    rel="noreferrer"
                     className="flex flex-col w-full md:w-7/12"
                 >
                     <Title>Contact</Title>
